@@ -13,11 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cupcake
+package com.eden.cupcake
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.cupcake.R
 
 /**
  * Activity for cupcake order flow.
  */
-class MainActivity : AppCompatActivity(R.layout.activity_main)
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        setupActionBarWithNavController(navHostFragment.navController)
+    }
+}

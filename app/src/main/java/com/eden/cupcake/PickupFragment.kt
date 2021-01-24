@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cupcake
+package com.eden.cupcake
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,6 +21,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.eden.cupcake.viewmodels.OrderViewModel
+import com.example.cupcake.R
 import com.example.cupcake.databinding.FragmentPickupBinding
 
 /**
@@ -32,11 +36,9 @@ class PickupFragment : Fragment() {
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
     private var binding: FragmentPickupBinding? = null
+    private val orderViewModel: OrderViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val fragmentBinding = FragmentPickupBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -46,7 +48,9 @@ class PickupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.apply {
-            nextButton.setOnClickListener { goToNextScreen() }
+            viewModel = orderViewModel
+            lifecycleOwner = viewLifecycleOwner
+            pickupFragment = this@PickupFragment
         }
     }
 
@@ -54,7 +58,7 @@ class PickupFragment : Fragment() {
      * Navigate to the next screen to see the order summary.
      */
     fun goToNextScreen() {
-        Toast.makeText(activity, "Next", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
     }
 
     /**
