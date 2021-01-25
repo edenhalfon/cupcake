@@ -17,13 +17,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.eden.cupcake.StartFragment">
+    tools:context="com.eden.cupcake.view.frament.StartFragment">
 
     <data>
 
         <variable
             name="startFragment"
-            type="com.eden.cupcake.StartFragment" />
+            type="com.eden.cupcake.view.frament.StartFragment" />
     </data>
 
     <ScrollView

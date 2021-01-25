@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.eden.cupcake.StartFragment"
+        android:name="com.eden.cupcake.view.frament.StartFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_start" >
         <action
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/flavorFragment"
-        android:name="com.eden.cupcake.FlavorFragment"
+        android:name="com.eden.cupcake.view.frament.FlavorFragment"
         android:label="@string/choose_flavor"
         tools:layout="@layout/fragment_flavor" >
         <action
@@ -41,7 +41,7 @@
 
     <fragment
         android:id="@+id/pickupFragment"
-        android:name="com.eden.cupcake.PickupFragment"
+        android:name="com.eden.cupcake.view.frament.PickupFragment"
         android:label="@string/choose_pickup_date"
         tools:layout="@layout/fragment_pickup" >
         <action
@@ -51,7 +51,7 @@
 
     <fragment
         android:id="@+id/summaryFragment"
-        android:name="com.eden.cupcake.SummaryFragment"
+        android:name="com.eden.cupcake.view.frament.SummaryFragment"
         android:label="@string/order_summary"
         tools:layout="@layout/fragment_summary" />
 

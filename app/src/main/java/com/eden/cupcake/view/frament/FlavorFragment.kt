@@ -13,35 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eden.cupcake
+package com.eden.cupcake.view.frament
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.eden.cupcake.viewmodels.OrderViewModel
-import com.example.cupcake.databinding.FragmentSummaryBinding
+import com.example.cupcake.R
+import com.example.cupcake.databinding.FragmentFlavorBinding
 
 /**
- * [SummaryFragment] contains a summary of the order details with a button to share the order
- * via another app.
+ * [FlavorFragment] allows a user to choose a cupcake flavor for the order.
  */
-class SummaryFragment : Fragment() {
+class FlavorFragment : Fragment() {
 
-    // Binding object instance corresponding to the fragment_summary.xml layout
+    // Binding object instance corresponding to the fragment_flavor.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
-    private var binding: FragmentSummaryBinding? = null
+    private var binding: FragmentFlavorBinding? = null
     private val orderViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentSummaryBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentFlavorBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -52,15 +52,15 @@ class SummaryFragment : Fragment() {
         binding?.apply {
             viewModel = orderViewModel
             lifecycleOwner = viewLifecycleOwner
-            summaryFragment = this@SummaryFragment
+            flavorFragment = this@FlavorFragment
         }
     }
 
     /**
-     * Submit the order by sharing out the order details to another app via an implicit intent.
+     * Navigate to the next screen to choose pickup date.
      */
-    fun sendOrder() {
-        Toast.makeText(activity, "Send Order", Toast.LENGTH_SHORT).show()
+    fun goToNextScreen() {
+        findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 
     /**
